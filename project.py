@@ -160,10 +160,12 @@ def search_project():
     if start_date >= end_date:
         print("End date must be after start date.")
         return
-    # print (start_date,"****  ",end_date)
+    print (type(start_date))
     with open("projects.txt",'r') as file:
+         l=file.readline()
          for line in file:
-              fields=line.strip().split(":")
+
+              fields=line.strip("\n").split(":")
               start=datetime.datetime.strptime(fields[5],"%Y-%m-%d").date()
               end=datetime.datetime.strptime(fields[6],"%Y-%m-%d").date()
               if start_date >= start and end <= end_date:
